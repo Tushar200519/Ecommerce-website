@@ -1,30 +1,30 @@
 // ===== DATA =====
 const PRODUCTS = [
-  {id:1,name:"Nike Air Max 270",category:"Footwear",price:120,oldPrice:150,stock:15,rating:4.8,reviews:234,emoji:"👟",badge:"Best Seller",sizes:["7","8","9","10","11"],image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=85&fit=crop",
+  {id:1,name:"Nike Air Max 270",category:"Footwear",price:7500,oldPrice:8500,stock:15,rating:4.8,reviews:234,emoji:"👟",badge:"Best Seller",sizes:["7","8","9","10","11"],image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=85&fit=crop",
   description:"Experience all-day comfort with the Nike Air Max 270. Featuring Nike's largest heel Air unit for maximum cushioning, a breathable mesh upper, and a sleek silhouette inspired by two iconic Air Max styles. Perfect for everyday wear. Available in multiple colorways. Machine washable upper.",
   features:["Max Air 270 heel unit","Breathable mesh upper","Foam midsole","Rubber outsole with flex grooves","Pull tab at heel"]},
 
-  {id:2,name:"Samsung Galaxy A54",category:"Mobile",price:380,oldPrice:420,stock:8,rating:4.6,reviews:187,emoji:"📱",badge:"Hot",sizes:[],image:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&q=85&fit=crop",
+  {id:2,name:"Samsung Galaxy A54",category:"Mobile",price:32999,oldPrice:39999,stock:8,rating:4.6,reviews:187,emoji:"📱",badge:"Hot",sizes:[],image:"https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=600&q=85&fit=crop",
   description:"The Samsung Galaxy A54 delivers a premium smartphone experience at an accessible price. Featuring a stunning 6.4-inch Super AMOLED display, a 50MP triple camera system, and a powerful 5000mAh battery. Runs on Android 13 with Samsung's One UI. Water resistant with IP67 rating.",
   features:["6.4\" Super AMOLED 120Hz display","50MP + 12MP + 5MP triple camera","5000mAh battery with 25W fast charging","IP67 water resistance","8GB RAM / 128GB storage"]},
 
-  {id:3,name:"Levi's 511 Jeans",category:"Clothing",price:65,oldPrice:85,stock:0,rating:4.4,reviews:312,emoji:"👖",badge:"Sale",sizes:["28","30","32","34","36"],image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=85&fit=crop",
+  {id:3,name:"Levi's 511 Jeans",category:"Clothing",price:800,oldPrice:1200,stock:8,rating:4.4,reviews:312,emoji:"👖",badge:"Sale",sizes:["28","30","32","34","36"],image:"https://images.unsplash.com/photo-1542272604-787c3835535d?w=600&q=85&fit=crop",
   description:"The Levi's 511 Slim Fit Jeans are a modern classic. Cut close to the body from the waist to ankle, these jeans are made from stretch denim that moves with you all day. A versatile wardrobe staple that pairs effortlessly with everything from casual tees to smart blazers.",
   features:["Slim fit from hip to ankle","Advanced stretch denim","5-pocket styling","Zip fly with button closure","99% Cotton, 1% Elastane"]},
 
-  {id:4,name:"Sony WH-1000XM5",category:"Electronics",price:280,oldPrice:320,stock:7,rating:4.9,reviews:521,emoji:"🎧",badge:"Top Rated",sizes:[],image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=85&fit=crop",
+  {id:4,name:"Sony WH-1000XM5",category:"Electronics",price:11000,oldPrice:15000,stock:7,rating:4.9,reviews:521,emoji:"🎧",badge:"Top Rated",sizes:[],image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=85&fit=crop",
   description:"Industry-leading noise cancellation meets exceptional sound quality in the Sony WH-1000XM5. With 8 microphones and two processors, these headphones block out distractions so you can focus on what matters. Enjoy up to 30 hours of battery life with quick charge — 3 minutes for 3 hours of playback.",
   features:["Industry-leading noise cancellation","30-hour battery life","Quick charge (3 min = 3 hrs)","Crystal clear hands-free calling","Multipoint connection (2 devices)"]},
 
-  {id:5,name:"Ray-Ban Aviator",category:"Eyewear",price:175,oldPrice:200,stock:22,rating:4.7,reviews:145,emoji:"🕶️",badge:null,sizes:[],image:"https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=85&fit=crop",
+  {id:5,name:"Ray-Ban Aviator",category:"Eyewear",price:1200,oldPrice:1800,stock:22,rating:4.7,reviews:145,emoji:"🕶️",badge:null,sizes:[],image:"https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=85&fit=crop",
   description:"The original aviator since 1937. Ray-Ban Aviator Classic sunglasses feature the iconic teardrop shape with a double bridge and bayonet temples. Crafted from lightweight metal with 100% UV protection lenses. A timeless style worn by icons across generations.",
   features:["Classic aviator silhouette","100% UV protection","Scratch-resistant lenses","Lightweight metal frame","Comes with Ray-Ban case & cloth"]},
 
-  {id:6,name:"Apple Watch Series 9",category:"Electronics",price:399,oldPrice:429,stock:5,rating:4.8,reviews:689,emoji:"⌚",badge:"New",sizes:["40mm","44mm"],image:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&q=85&fit=crop",
+  {id:6,name:"Apple Watch Series 9",category:"Electronics",price:35000,oldPrice:40000,stock:5,rating:4.8,reviews:689,emoji:"⌚",badge:"New",sizes:["40mm","44mm"],image:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=600&q=85&fit=crop",
   description:"The Apple Watch Series 9 is the most powerful Apple Watch yet, with the new S9 chip and a double tap gesture. Features an always-on Retina display, advanced health sensors including ECG and blood oxygen monitoring, crash detection, and up to 18 hours of battery life.",
   features:["S9 chip with Double Tap gesture","Always-On Retina display","ECG & Blood Oxygen app","Crash & Fall detection","18-hour battery life","Water resistant 50m"]},
 
-  {id:7,name:"Adidas Ultraboost 22",category:"Footwear",price:180,oldPrice:220,stock:12,rating:4.6,reviews:298,emoji:"👟",badge:"Sale",sizes:["7","8","9","10","11","12"],image:"https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&q=85&fit=crop",
+  {id:7,name:"Adidas Ultraboost 22",category:"Footwear",price:5500,oldPrice:7500,stock:12,rating:4.6,reviews:298,emoji:"👟",badge:"Sale",sizes:["7","8","9","10","11","12"],image:"https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=600&q=85&fit=crop",
   description:"Adidas Ultraboost 22 — The most comfortable running shoe Adidas has ever made. Built with full-length Boost cushioning for maximum energy return on every step. Whether you're training for a marathon or walking to work, the Ultraboost 22 adapts to your foot and your lifestyle.",
   features:[
     "RESPONSIVE BOOST MIDSOLE — Full-length Boost technology returns energy with every stride for an incredibly comfortable ride",
@@ -41,55 +41,55 @@ const PRODUCTS = [
     "DROP — 10mm heel-to-toe drop for a natural running gait"
   ]},
 
-  {id:8,name:"Canon EOS M50 II",category:"Electronics",price:699,oldPrice:749,stock:4,rating:4.7,reviews:156,emoji:"📷",badge:null,sizes:[],image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=85&fit=crop",
+  {id:8,name:"Canon EOS M50 II",category:"Electronics",price:52000,oldPrice:60000,stock:4,rating:4.7,reviews:156,emoji:"📷",badge:null,sizes:[],image:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&q=85&fit=crop",
   description:"The Canon EOS M50 Mark II is the ultimate mirrorless camera for content creators and photography enthusiasts. Shoot stunning 4K video and 24.1MP stills with Dual Pixel CMOS AF for fast, accurate autofocus. The vari-angle touchscreen LCD and built-in Wi-Fi make sharing effortless.",
   features:["24.1MP APS-C CMOS sensor","4K video recording","Dual Pixel CMOS AF","Vari-angle touchscreen","Built-in Wi-Fi & Bluetooth","Eye Detection AF"]},
 
-  {id:9,name:"Zara Summer Dress",category:"Clothing",price:45,oldPrice:60,stock:30,rating:4.3,reviews:203,emoji:"👗",badge:null,sizes:["XS","S","M","L","XL"],image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=85&fit=crop",
+  {id:9,name:"Zara Summer Dress",category:"Clothing",price:800,oldPrice:1300,stock:30,rating:4.3,reviews:203,emoji:"👗",badge:null,sizes:["XS","S","M","L","XL"],image:"https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=600&q=85&fit=crop",
   description:"Effortlessly chic for warm weather days. This Zara Summer Dress features a flowy silhouette in lightweight fabric that keeps you cool all day. Perfect for beach outings, brunches, or casual evenings out. Pairs beautifully with sandals or sneakers.",
   features:["Lightweight breathable fabric","Relaxed flowy silhouette","Side pockets","Adjustable straps","Machine washable","100% Viscose"]},
 
-  {id:10,name:"iPad Pro 11-inch",category:"Electronics",price:799,oldPrice:850,stock:6,rating:4.9,reviews:432,emoji:"💻",badge:"Hot",sizes:["128GB","256GB","512GB"],image:"https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=85&fit=crop",
+  {id:10,name:"iPad Pro 11-inch",category:"Electronics",price:99900,oldPrice:105000,stock:6,rating:4.9,reviews:432,emoji:"💻",badge:"Hot",sizes:["128GB","256GB","512GB"],image:"https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=600&q=85&fit=crop",
   description:"The iPad Pro 11-inch with M2 chip delivers desktop-class performance in a stunning portable design. The Liquid Retina display with ProMotion technology adapts refresh rate up to 120Hz for incredibly smooth scrolling. Compatible with Apple Pencil (2nd gen) and Magic Keyboard.",
   features:["Apple M2 chip","11-inch Liquid Retina display","ProMotion 120Hz technology","USB-C with Thunderbolt","Compatible with Apple Pencil 2","Up to 10-hour battery life"]},
 
-  {id:11,name:"Gucci Sunglasses",category:"Eyewear",price:320,oldPrice:380,stock:9,rating:4.5,reviews:89,emoji:"🕶️",badge:"Luxury",sizes:[],image:"https://images.unsplash.com/photo-1508296695146-257a814070b4?w=600&q=85&fit=crop",
+  {id:11,name:"Gucci Sunglasses",category:"Eyewear",price:25000,oldPrice:32000,stock:9,rating:4.5,reviews:89,emoji:"🕶️",badge:"Luxury",sizes:[],image:"https://images.unsplash.com/photo-1508296695146-257a814070b4?w=600&q=85&fit=crop",
   description:"Elevate your look with these iconic Gucci sunglasses. Crafted in Italy from premium acetate with signature GG hardware on the temples. Featuring gradient lenses with 100% UV400 protection. A statement piece that combines luxury craftsmanship with contemporary style.",
   features:["Made in Italy","Premium acetate frame","GG logo hardware","100% UV400 protection","Gradient lenses","Comes with Gucci case"]},
 
-  {id:12,name:"Nike Dri-FIT Shirt",category:"Clothing",price:35,oldPrice:45,stock:50,rating:4.4,reviews:178,emoji:"👕",badge:null,sizes:["S","M","L","XL","XXL"],image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=85&fit=crop",
+  {id:12,name:"Nike Dri-FIT Shirt",category:"Clothing",price:1500,oldPrice:2500,stock:50,rating:4.4,reviews:178,emoji:"👕",badge:null,sizes:["S","M","L","XL","XXL"],image:"https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=85&fit=crop",
   description:"Train harder and stay cooler with the Nike Dri-FIT Training Shirt. The innovative Dri-FIT technology wicks sweat away from your skin to the fabric surface where it evaporates quickly, keeping you dry and comfortable during intense workouts. Lightweight, breathable, and built to perform.",
   features:["Nike Dri-FIT sweat-wicking technology","Lightweight breathable fabric","Relaxed athletic fit","Tagless for comfort","Machine washable","100% Recycled Polyester"]},
 
-  {id:13,name:"Nike Air Force 1 '07",category:"Footwear",price:110,oldPrice:130,stock:18,rating:4.9,reviews:1423,emoji:"👟",badge:"Best Seller",sizes:["6","7","8","9","10","11","12"],image:"https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&q=85&fit=crop",
+  {id:13,name:"Nike Air Force 1 '07",category:"Footwear",price:10000,oldPrice:15000,stock:18,rating:4.9,reviews:1423,emoji:"👟",badge:"Best Seller",sizes:["6","7","8","9","10","11","12"],image:"https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?w=600&q=85&fit=crop",
   description:"The Nike Air Force 1 '07 is a timeless icon that has been a street style staple since 1982. Its clean, classic silhouette features Nike's revolutionary Air cushioning technology for all-day comfort. Whether you're dressing up or keeping it casual, the AF1 elevates every look effortlessly.",
   features:["ICONIC DESIGN — Classic low-top silhouette inspired by the 1982 original","AIR CUSHIONING — Full-length Nike Air unit for lightweight, responsive cushioning","LEATHER UPPER — Premium full-grain leather for durability and easy cleaning","RUBBER OUTSOLE — Multi-directional grip for traction on any surface","PADDED COLLAR — Plush comfort around the ankle for a snug fit","VERSATILE STYLE — Pairs with jeans, joggers, shorts, or formal trousers"]},
 
-  {id:14,name:"Samsung Galaxy S25 Ultra",category:"Mobile",price:1299,oldPrice:1399,stock:10,rating:4.9,reviews:876,emoji:"📱",badge:"New",sizes:["256GB","512GB","1TB"],image:"https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?w=600&q=85&fit=crop",
+  {id:14,name:"Samsung Galaxy S25 Ultra",category:"Mobile",price:139999,oldPrice:150000,stock:10,rating:4.9,reviews:876,emoji:"📱",badge:"New",sizes:["256GB","512GB","1TB"],image:"https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?w=600&q=85&fit=crop",
   description:"The Samsung Galaxy S25 Ultra redefines what a smartphone can do. Powered by the Snapdragon 8 Elite processor and featuring an upgraded 200MP camera system with AI-enhanced photography. The built-in S Pen now supports AI drawing assist, and the 5000mAh battery with 45W fast charging keeps you powered all day.",
   features:["SNAPDRAGON 8 ELITE — The fastest mobile processor ever made","200MP MAIN CAMERA — Capture stunning detail in any light with AI scene optimization","S PEN INCLUDED — Now with AI drawing assist and lower latency","6.9-INCH QHD+ DISPLAY — 120Hz Dynamic AMOLED 2X, 2600 nits brightness","5000mAh BATTERY — 45W wired + 15W wireless charging","12GB RAM / 256GB base storage — Multitask without limits","IP68 WATER RESISTANT — Dust and water protection up to 1.5m for 30 minutes"]},
 
-  {id:15,name:"iPhone 17 Pro",category:"Mobile",price:1199,oldPrice:1249,stock:7,rating:4.9,reviews:654,emoji:"📱",badge:"Hot",sizes:["128GB","256GB","512GB","1TB"],image:"https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=85&fit=crop",
+  {id:15,name:"iPhone 17 Pro",category:"Mobile",price:117000,oldPrice:132000,stock:7,rating:4.9,reviews:654,emoji:"📱",badge:"Hot",sizes:["128GB","256GB","512GB","1TB"],image:"https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=600&q=85&fit=crop",
   description:"The iPhone 17 Pro is Apple's most capable iPhone ever. Featuring the all-new A19 Pro chip, a pro-grade camera system with 5x optical zoom, and a stunning 6.3-inch Super Retina XDR ProMotion display with Always-On. Built with a titanium frame and ceramic shield for durability that matches its beauty.",
   features:["A19 PRO CHIP — Faster than any mobile chip, built for AI and Pro performance","48MP MAIN + 48MP ULTRAWIDE + 12MP TELEPHOTO — Pro camera system with 5x optical zoom","TITANIUM FRAME — Aerospace-grade titanium, lighter and stronger than steel","6.3\" SUPER RETINA XDR — ProMotion 120Hz, Always-On display","USB-C WITH USB 3 — Up to 20x faster transfers for ProRes video","APPLE INTELLIGENCE — AI writing, photo editing, and Siri built-in","FACE ID — Most secure facial authentication available","ALL-DAY BATTERY — Up to 27 hours video playback"]},
 
-  {id:16,name:"Samsung 340L Double Door Fridge",category:"Electronics",price:649,oldPrice:799,stock:5,rating:4.6,reviews:312,emoji:"🧊",badge:"Sale",sizes:[],image:"https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=85&fit=crop",
+  {id:16,name:"Samsung 340L Double Door Fridge",category:"Electronics",price:18000,oldPrice:25000,stock:5,rating:4.6,reviews:312,emoji:"🧊",badge:"Sale",sizes:[],image:"https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=600&q=85&fit=crop",
   description:"The Samsung 340L Double Door Refrigerator combines smart technology with elegant design. Featuring Digital Inverter Compressor for energy efficiency and a Twin Cooling Plus system that maintains optimal humidity in both the fridge and freezer independently. The All-Around Cooling ensures every corner stays at the perfect temperature.",
   features:["DIGITAL INVERTER COMPRESSOR — Saves up to 46% energy, 10-year warranty","TWIN COOLING PLUS — Separate cooling for fridge & freezer, prevents odor mixing","ALL-AROUND COOLING — Multiple vents maintain uniform temperature throughout","POWER FREEZE & COOL — Quick freeze and cool at the touch of a button","LARGE 340L CAPACITY — Spacious interior fits a week's grocery easily","AUTO DEFROST — No manual defrosting needed","TEMPERED GLASS SHELVES — Sturdy, easy-to-clean shelves","BEE 5-STAR RATED — Maximum energy efficiency rating"]},
 
-  {id:17,name:"Premium Cotton Bedsheet Set",category:"Clothing",price:89,oldPrice:120,stock:35,rating:4.7,reviews:289,emoji:"🛏️",badge:null,sizes:["Single","Double","Queen","King"],image:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=85&fit=crop",
+  {id:17,name:"Premium Cotton Bedsheet Set",category:"Clothing",price:600,oldPrice:999,stock:35,rating:4.7,reviews:289,emoji:"🛏️",badge:null,sizes:["Single","Double","Queen","King"],image:"https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=85&fit=crop",
   description:"Sleep in absolute luxury with our Premium 400 Thread Count Egyptian Cotton Bedsheet Set. The ultra-soft sateen weave feels silky smooth against your skin, getting softer with every wash. Includes 1 fitted sheet, 1 flat sheet, and 2 pillowcases. Available in elegant solid colours to match any bedroom décor.",
   features:["400 THREAD COUNT — Ultra-soft, hotel-quality feel that gets softer with every wash","100% EGYPTIAN COTTON — Breathable, hypoallergenic, and naturally moisture-wicking","SATEEN WEAVE — Silky smooth finish with a subtle sheen","DEEP POCKET FITTED SHEET — Fits mattresses up to 14 inches deep, stays in place all night","SET INCLUDES — 1 flat sheet + 1 fitted sheet + 2 pillowcases","EASY CARE — Machine washable, wrinkle-resistant","AVAILABLE IN 8 COLOURS — White, Ivory, Grey, Navy, Sage, Blush, Charcoal, Sky Blue","OEKO-TEX CERTIFIED — Free from harmful chemicals, safe for sensitive skin"]},
 
-  {id:18,name:"Bose QuietComfort 45",category:"Electronics",price:329,oldPrice:379,stock:9,rating:4.8,reviews:467,emoji:"🎧",badge:"Top Rated",sizes:[],image:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&q=85&fit=crop",
+  {id:18,name:"Bose QuietComfort 45",category:"Electronics",price:11000,oldPrice:18000,stock:9,rating:4.8,reviews:467,emoji:"🎧",badge:"Top Rated",sizes:[],image:"https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600&q=85&fit=crop",
   description:"The Bose QuietComfort 45 headphones deliver world-class noise cancellation and exceptional audio quality. Whether you're on a packed commute or working from a noisy café, the QC45 creates a bubble of peace around you. With 22 hours of battery life and plush ear cushions, these are built for marathon listening sessions.",
   features:["WORLD-CLASS NOISE CANCELLATION — Bose proprietary Quiet Mode blocks distractions completely","AWARE MODE — Lets in surrounding sound when you need to stay alert","22-HOUR BATTERY LIFE — With 15-minute quick charge giving 3 hours of playback","TRIPORT ACOUSTIC ARCHITECTURE — High-fidelity audio with deep, powerful bass","MULTIPOINT CONNECTION — Switch seamlessly between two Bluetooth devices","PLUSH EAR CUSHIONS — Soft protein leather for all-day wearing comfort","FOLDABLE DESIGN — Compact folding for easy travel and storage","VOICE ASSISTANT READY — Works with Alexa, Siri, and Google Assistant"]},
 
-  {id:19,name:"LG 1.5 Ton 5-Star Inverter AC",category:"Electronics",price:899,oldPrice:1099,stock:6,rating:4.7,reviews:198,emoji:"❄️",badge:"Sale",sizes:[],image:"https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&q=85&fit=crop",
+  {id:19,name:"LG 1.5 Ton 5-Star Inverter AC",category:"Electronics",price:45000,oldPrice:52000,stock:6,rating:4.7,reviews:198,emoji:"❄️",badge:"Sale",sizes:[],image:"https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&q=85&fit=crop",
   description:"Beat the heat with the LG 1.5 Ton 5-Star Dual Inverter Air Conditioner. The revolutionary Dual Inverter Compressor runs at variable speeds for faster cooling, quieter operation, and up to 60% energy savings versus conventional ACs. The AI Convertible 6-in-1 mode adapts to your exact cooling needs.",
   features:["DUAL INVERTER COMPRESSOR — 60% energy savings, cools 40% faster than conventional ACs","AI CONVERTIBLE 6-IN-1 — Adjusts capacity from 40% to 110% based on room conditions","5-STAR BEE RATING — Maximum energy efficiency, lowest electricity bills","AUTO CLEAN — Self-cleaning function prevents bacteria and mold buildup","HD FILTER — Captures fine dust, allergens, and micro-particles","4-WAY AUTO SWING — Uniform air distribution throughout the room","MONSOON COMFORT — Dehumidification mode for humid conditions","Wi-Fi ENABLED — Control from anywhere via LG ThinQ app","R-32 REFRIGERANT — Eco-friendly, low global warming potential"]},
 
-  {id:20,name:"Apple MacBook Air M3",category:"Electronics",price:1099,oldPrice:1199,stock:8,rating:4.9,reviews:543,emoji:"💻",badge:"New",sizes:["8GB/256GB","16GB/512GB","24GB/1TB"],image:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=85&fit=crop",
+  {id:20,name:"Apple MacBook Air M3",category:"Electronics",price:92000,oldPrice:106000,stock:8,rating:4.9,reviews:543,emoji:"💻",badge:"New",sizes:["8GB/256GB","16GB/512GB","24GB/1TB"],image:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600&q=85&fit=crop",
   description:"The MacBook Air with M3 chip is the world's best consumer laptop. Impossibly thin at just 11.3mm, yet powerful enough to handle video editing, coding, and creative work with ease. The stunning Liquid Retina display, up to 18-hour battery life, and silent fanless design make it the perfect all-day companion.",
   features:["APPLE M3 CHIP — Up to 60% faster than M1, handles pro-level workloads effortlessly","18-HOUR BATTERY LIFE — Work all day and into the evening on a single charge","13.6\" LIQUID RETINA DISPLAY — 500 nits brightness, P3 wide colour, True Tone","FANLESS DESIGN — Completely silent operation, no fans ever","8GB UNIFIED MEMORY (base) — Runs multiple apps smoothly, upgradeable to 24GB","1080p FACETIME HD CAMERA — Best camera ever in a MacBook Air","MAGSAFE CHARGING — Fast, convenient magnetic charging","TWO USB-C / THUNDERBOLT 3 PORTS — High-speed data, display, and charging","AVAILABLE IN 4 COLOURS — Midnight, Starlight, Space Grey, Sky Blue"]},
 ];
@@ -145,13 +145,13 @@ function showPage(name, pushState=true){
   if(name==='checkout')renderCheckoutPage();
   if(name==='admin')renderAdminPage();
   if(name==='home')renderHomePage();
-  // ✅ Browser history-তে push করো
+  
   if(pushState){
     history.pushState({page:name}, '', '#'+name);
   }
 }
 
-// ✅ Browser back/forward button handle করো
+
 window.addEventListener('popstate', function(e){
   const page = e.state?.page || 'home';
   showPage(page, false);
@@ -273,11 +273,11 @@ function pCard(p){
 }
 
 function goToCategory(cat){
-  // activeProdCat আগেই set করো — renderProdPage এটা use করবে
+  
   activeProdCat = cat==='All' ? 'All' : cat;
-  // products page-এ যাও (এটা renderProdPage() call করবে যা activeProdCat use করে)
+  
   showPage('products');
-  // dropdown ও filter sync করো
+  
   setTimeout(()=>{
     const catSelect=document.getElementById('prod-cat');
     if(catSelect) catSelect.value=cat;
@@ -313,7 +313,7 @@ function prodCatFilter(el,cat){
 function filterProds(){
   const q=(document.getElementById('prod-search')?.value||'').toLowerCase();
   const sort=document.getElementById('prod-sort')?.value||'';
-  // dropdown value নিন, কিন্তু activeProdCat কে priority দিন
+  
   const dropVal=document.getElementById('prod-cat')?.value||'All';
   const cat=activeProdCat!=='All' ? activeProdCat : dropVal;
   const inStock=document.getElementById('instock-only')?.checked||false;
@@ -608,7 +608,7 @@ function openEditModal(pid){
   document.getElementById('ep-sizes').value = (p.sizes||[]).join(', ');
   document.getElementById('ep-desc').value = p.description||'';
 
-  // Current image দেখাও
+  
   const curWrap = document.getElementById('ep-current-img-wrap');
   const curImg = document.getElementById('ep-current-img');
   if(p.image){ curWrap.style.display='block'; curImg.src=p.image; }
@@ -954,8 +954,6 @@ function closeNavSearch(){document.getElementById('search-dropdown').classList.r
 // INIT
 loadProducts();
 updateCartUI();
-
-// ✅ Page load-এ URL hash দেখে সঠিক page দেখাও
 const initPage = location.hash.replace('#','') || 'home';
 const validPages = ['home','products','cart','checkout','admin','product-detail'];
 const startPage = validPages.includes(initPage) ? initPage : 'home';
