@@ -45,12 +45,3 @@ Password: `admin123`
 ```
 
 ---
-
-**Commit message (first push):**
-```
-Initial commit — LUXE e-commerce frontend v1.0
-```
-
-**Topics/Tags দিতে পারেন:**
-```
-ecommerce, html, css, javascript, frontend, vanilla-js, responsive
