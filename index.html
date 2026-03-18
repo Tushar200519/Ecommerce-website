@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LUXE — Premium E-Commerce</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <div class="navbar-logo" onclick="showPage('home')">LU<em>X</em>E</div>
+    <ul class="navbar-nav">
+      <li><a id="nav-home" class="active" onclick="showPage('home')">Collection</a></li>
+      <li><a id="nav-products" onclick="showPage('products')">Shop</a></li>
+      <li><a id="nav-cart" onclick="showPage('cart')">Cart</a></li>
+      <li><a id="nav-admin" onclick="showPage('admin')">Admin</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:16px">
+      <div class="navbar-search">
+        <span class="search-icon-label">⌕</span>
+        <input type="text" id="navbar-search-input" placeholder="Search products..."
+          oninput="navSearch(this.value)"
+          onfocus="navSearch(this.value)"
+          onblur="setTimeout(()=>closeNavSearch(),200)"/>
+        <div class="search-dropdown" id="search-dropdown"></div>
+      </div>
+      <div class="navbar-actions">
+        <button class="nav-icon-btn" onclick="openCart()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+          <span class="cart-badge" id="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <div class="cart-title">Your Selection</div>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cart-items-sidebar"></div>
+  <div id="cart-footer-sidebar" style="display:none">
+    <div class="cart-footer-box">
+      <div class="cart-row"><span>Subtotal</span><span id="sb-sub">₹0.00</span></div>
+      <div class="cart-row"><span>Shipping</span><span id="sb-ship">₹10.00</span></div>
+      <div class="cart-total-row"><span>Total</span><span id="sb-total">₹0.00</span></div>
+      <button class="btn btn-dark btn-full" onclick="showPage('checkout');closeCart()" style="margin-bottom:8px">Proceed to Checkout</button>
+      <button class="btn btn-ghost btn-full" onclick="showPage('cart');closeCart()">View Cart</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast-container" id="toast-box"></div>
+
+<!-- ══════════ HOME ══════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow">New Season 2025</div>
+      <h1>Curated for the<br/><em>Discerning</em><br/>Few.</h1>
+      <p class="hero-sub">Premium fashion, electronics and lifestyle goods — selected with uncompromising standards for quality and design.</p>
+      <div class="hero-actions">
+        <button class="btn btn-gold" onclick="showPage('products')">Explore Collection</button>
+        <button class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.3)" onclick="showPage('products')">View Catalogue</button>
+      </div>
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">50K+</div><div class="hero-stat-lbl">Products</div></div>
+        <div><div class="hero-stat-num">200K</div><div class="hero-stat-lbl">Clients</div></div>
+        <div><div class="hero-stat-num">4.9</div><div class="hero-stat-lbl">Rating</div></div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-bg-grid"></div>
+      <div class="hero-featured-grid" id="hero-feat-grid">
+        <div class="hero-feat-cell" onclick="goToCategory('Footwear')" style="cursor:pointer">
+          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=85&fit=crop" alt="Footwear" loading="eager"/>
+          <div class="hero-feat-overlay"><div class="hero-feat-label">Footwear</div></div>
+        </div>
+        <div class="hero-feat-cell" onclick="goToCategory('Electronics')" style="cursor:pointer">
+          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=85&fit=crop" alt="Electronics" loading="eager"/>
+          <div class="hero-feat-overlay"><div class="hero-feat-label">Electronics</div></div>
+        </div>
+        <div class="hero-feat-cell" onclick="goToCategory('Clothing')" style="cursor:pointer">
+          <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=85&fit=crop" alt="Clothing" loading="eager"/>
+          <div class="hero-feat-overlay"><div class="hero-feat-label">Clothing</div></div>
+        </div>
+        <div class="hero-feat-cell" onclick="goToCategory('Eyewear')" style="cursor:pointer">
+          <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=600&q=85&fit=crop" alt="Eyewear" loading="eager"/>
+          <div class="hero-feat-overlay"><div class="hero-feat-label">Eyewear</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-bar">
+    <div class="marquee-track">
+      <span class="marquee-item">Free Shipping Over ₹100 <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">New Arrivals Every Week <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">30-Day Returns <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">Secure Checkout <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">Use Code WELCOME20 for 20% Off <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">Free Shipping Over ₹100 <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">New Arrivals Every Week <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">30-Day Returns <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">Secure Checkout <span class="marquee-sep">—</span></span>
+      <span class="marquee-item">Use Code WELCOME20 for 20% Off <span class="marquee-sep">—</span></span>
+    </div>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section" style="background:var(--white)">
+    <div class="container">
+      <div class="section-header-row">
+        <div>
+          <div class="section-eyebrow">Curated Selection</div>
+          <div class="section-title">Featured Products</div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <div class="cat-bar" id="home-cats" style="max-width:480px"></div>
+          <button class="btn btn-outline btn-sm" onclick="showPage('products')">View All</button>
+        </div>
+      </div>
+      <div class="products-grid" id="home-products"></div>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <section class="section">
+    <div class="container">
+      <div class="promo">
+        <div>
+          <div class="promo-label">Limited Time Offer</div>
+          <h2>Twenty Percent<br/><em>Off</em> Your First Order</h2>
+          <p>New to LUXE? Begin with privilege.</p>
+          <div class="promo-code">WELCOME20</div>
+        </div>
+        <button class="btn btn-dark" style="font-size:14px;padding:16px 40px" onclick="showPage('products')">Shop Now</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <div class="features-strip">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feat-item"><div class="feat-icon">→</div><div><div class="feat-title">Free Delivery</div><div class="feat-desc">On all orders above ₹100</div></div></div>
+        <div class="feat-item"><div class="feat-icon">↩</div><div><div class="feat-title">Easy Returns</div><div class="feat-desc">30-day hassle-free policy</div></div></div>
+        <div class="feat-item"><div class="feat-icon">⊕</div><div><div class="feat-title">Secure Payment</div><div class="feat-desc">SSL encrypted checkout</div></div></div>
+        <div class="feat-item"><div class="feat-icon">◎</div><div><div class="feat-title">Premium Support</div><div class="feat-desc">Dedicated 24/7 assistance</div></div></div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><div class="footer-brand">LU<em>X</em>E</div><div class="footer-desc">A curated destination for those who demand the finest in fashion, technology and lifestyle.</div></div>
+        <div><div class="footer-heading">Navigate</div><ul class="footer-links">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('products')">Shop</a></li>
+          <li><a onclick="showPage('cart')">Cart</a></li>
+          <li><a onclick="showPage('admin')">Admin</a></li>
+        </ul></div>
+        <div><div class="footer-heading">Categories</div><ul class="footer-links">
+          <li><a onclick="goToCategory('Footwear')">Footwear</a></li>
+          <li><a onclick="goToCategory('Electronics')">Electronics</a></li>
+          <li><a onclick="goToCategory('Clothing')">Clothing</a></li>
+          <li><a onclick="goToCategory('Eyewear')">Eyewear</a></li>
+          <li><a onclick="goToCategory('Mobile')">Mobile</a></li>
+        </ul></div>
+        <div><div class="footer-heading">Support</div><ul class="footer-links">
+          <li><a onclick="openSupportModal('contact')">Contact Us</a></li>
+          <li><a onclick="openSupportModal('track')">Track Order</a></li>
+          <li><a onclick="openSupportModal('returns')">Returns</a></li>
+          <li><a onclick="openSupportModal('faq')">FAQ</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom"><span>© 2025 LUXE. All rights reserved.</span><span>Crafted with precision.</span></div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════ PRODUCTS ══════════ -->
+<div class="page" id="page-products">
+  <div class="page-hdr"><div class="page-hdr-inner"><h1>The Collection</h1><div class="breadcrumb"><a onclick="showPage('home')">Home</a><span class="breadcrumb-sep">/</span><span>Shop</span></div></div></div>
+  <section class="section">
+    <div class="container">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px;align-items:center">
+        <input id="prod-search" type="text" placeholder="Search products..." class="form-control" style="width:220px" oninput="filterProds()"/>
+        <select id="prod-sort" class="form-control" style="width:auto;cursor:pointer" onchange="filterProds()">
+          <option value="">Sort: Default</option>
+          <option value="price-asc">Price: Low → High</option>
+          <option value="price-desc">Price: High → Low</option>
+          <option value="rating">Top Rated</option>
+        </select>
+        <select id="prod-cat" class="form-control" style="width:auto;cursor:pointer" onchange="filterProds()">
+          <option value="All">All Categories</option>
+          <option>Footwear</option><option>Mobile</option><option>Clothing</option><option>Electronics</option><option>Eyewear</option>
+        </select>
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;cursor:pointer;font-family:var(--mono)"><input type="checkbox" id="instock-only" onchange="filterProds()" style="accent-color:var(--gold)"/> In Stock Only</label>
+        <span id="prod-count" style="font-size:11px;color:var(--text-muted);font-family:var(--mono);margin-left:auto;letter-spacing:.5px"></span>
+      </div>
+      <div class="cat-bar" id="prod-cats" style="margin-bottom:28px"></div>
+      <div class="products-grid" id="prod-grid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ PRODUCT DETAIL ══════════ -->
+<div class="page" id="page-product-detail">
+  <div class="page-hdr"><div class="page-hdr-inner"><h1 id="pd-page-title">Product</h1><div class="breadcrumb"><a onclick="showPage('home')">Home</a><span class="breadcrumb-sep">/</span><a onclick="showPage('products')">Shop</a><span class="breadcrumb-sep">/</span><span id="pd-breadcrumb"></span></div></div></div>
+  <section class="section">
+    <div class="container">
+      <div class="pd-grid">
+        <div class="pd-img-wrap" id="pd-img">◈</div>
+        <div>
+          <div class="pd-eyebrow" id="pd-cat"></div>
+          <div class="pd-name" id="pd-name"></div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:12px">
+            <span id="pd-stars" style="color:var(--gold);font-size:14px;letter-spacing:2px"></span>
+            <span id="pd-reviews" style="font-size:12px;color:var(--text-muted);font-family:var(--mono)"></span>
+          </div>
+          <div class="pd-price" id="pd-price"></div>
+          <div class="pd-desc" id="pd-desc"></div>
+          <div id="pd-sizes-wrap" style="margin-top:22px;display:none">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Select Size</div>
+            <div class="size-options" id="pd-sizes"></div>
+          </div>
+          <div style="margin-top:28px;display:flex;align-items:center;gap:14px">
+            <div class="qty-sel">
+              <button class="qty-btn" onclick="pdQty(-1)">−</button>
+              <input class="qty-input" id="pd-qty" type="number" value="1" min="1"/>
+              <button class="qty-btn" onclick="pdQty(1)">+</button>
+            </div>
+            <button class="btn btn-dark" style="flex:1" id="pd-add-btn" onclick="pdAddCart()">Add to Selection</button>
+          </div>
+          <div style="margin-top:12px;display:flex;gap:10px">
+            <button class="btn btn-ghost btn-sm" id="pd-wish-btn" onclick="pdToggleWish()">♡ Wishlist</button>
+            <button class="btn btn-ghost btn-sm" onclick="showPage('products')">← Back</button>
+          </div>
+          <div style="margin-top:24px;padding:16px;background:var(--cream);border-radius:var(--r);border:1px solid var(--border)">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px">Product Details</div>
+            <div style="font-size:13px;color:var(--text-muted);line-height:1.7" id="pd-detail-desc">Premium quality product with exceptional materials. Worldwide express delivery. 30-day returns guaranteed.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ CART ══════════ -->
+<div class="page" id="page-cart">
+  <div class="page-hdr"><div class="page-hdr-inner"><h1>Your Cart</h1><div class="breadcrumb"><a onclick="showPage('home')">Home</a><span class="breadcrumb-sep">/</span><span>Cart</span></div></div></div>
+  <section class="section">
+    <div class="container">
+      <div id="cart-empty-page" style="display:none;text-align:center;padding:80px 20px">
+        <div style="font-family:var(--serif);font-size:64px;color:var(--border);margin-bottom:20px">∅</div>
+        <h2 style="font-family:var(--serif);font-size:32px;font-weight:600;margin-bottom:10px">Your cart is empty</h2>
+        <p style="color:var(--text-muted);margin-bottom:28px;font-size:14px">Discover our curated collection</p>
+        <button class="btn btn-dark" onclick="showPage('products')">Explore Collection</button>
+      </div>
+      <div class="cart-page-grid" id="cart-page-content">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px">
+            <div style="font-family:var(--mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted)">Items (<span id="cart-item-count">0</span>)</div>
+            <button onclick="clearCart()" style="background:none;border:none;color:var(--rust);font-size:11px;font-weight:500;cursor:pointer;font-family:var(--mono);letter-spacing:.5px">Clear All</button>
+          </div>
+          <div style="background:var(--white);border-radius:var(--r2);border:1px solid var(--border);overflow:hidden">
+            <table class="cart-tbl"><thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th><th></th></tr></thead>
+            <tbody id="cart-page-tbody"></tbody></table>
+          </div>
+          <div style="margin-top:16px;display:flex;gap:12px;flex-wrap:wrap">
+            <button class="btn btn-ghost btn-sm" onclick="showPage('products')">← Continue Shopping</button>
+            <div style="display:flex;gap:8px;align-items:center;margin-left:auto">
+              <input id="coupon-code" type="text" class="form-control" placeholder="Coupon code" style="width:160px;font-family:var(--mono)"/>
+              <button class="btn btn-dark btn-sm" onclick="applyCoupon()">Apply</button>
+            </div>
+          </div>
+        </div>
+        <div class="order-summary">
+          <div style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:18px">Order Summary</div>
+          <div class="summary-row"><span>Subtotal</span><span id="cp-sub">₹0.00</span></div>
+          <div class="summary-row"><span>Shipping</span><span id="cp-ship">₹10.00</span></div>
+          <div class="summary-row" id="cp-disc-row" style="display:none;color:var(--sage)"><span>Discount (20%)</span><span id="cp-disc">−$0.00</span></div>
+          <div class="summary-total"><span>Total</span><span id="cp-total">₹0.00</span></div>
+          <button class="btn btn-dark btn-full" style="margin-top:18px" onclick="showPage('checkout')">Proceed to Checkout</button>
+          <div style="text-align:center;margin-top:14px;font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:.8px">SSL SECURED · FREE RETURNS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ CHECKOUT ══════════ -->
+<div class="page" id="page-checkout">
+  <div class="page-hdr"><div class="page-hdr-inner"><h1>Checkout</h1><div class="breadcrumb"><a onclick="showPage('home')">Home</a><span class="breadcrumb-sep">/</span><a onclick="showPage('cart')">Cart</a><span class="breadcrumb-sep">/</span><span>Checkout</span></div></div></div>
+  <section class="section">
+    <div class="container">
+      <div class="checkout-grid">
+        <div>
+          <div class="form-section">
+            <div class="form-section-title">Contact Information</div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">First Name *</label><input type="text" class="form-control" id="co-fname" placeholder="John"/></div>
+              <div class="form-group"><label class="form-label">Last Name *</label><input type="text" class="form-control" id="co-lname" placeholder="Doe"/></div>
+            </div>
+            <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-control" id="co-email" placeholder="john@email.com"/></div>
+            <div class="form-group"><label class="form-label">Phone *</label><input type="tel" class="form-control" id="co-phone" placeholder="+1 555-000-0000"/></div>
+          </div>
+          <div class="form-section">
+            <div class="form-section-title">Shipping Address</div>
+            <div class="form-group"><label class="form-label">Address *</label><input type="text" class="form-control" id="co-addr" placeholder="123 Main Street"/></div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">City *</label><input type="text" class="form-control" id="co-city" placeholder="New York"/></div>
+              <div class="form-group"><label class="form-label">ZIP *</label><input type="text" class="form-control" id="co-zip" placeholder="10001"/></div>
+            </div>
+            <div class="form-group"><label class="form-label">Country</label>
+              <select class="form-control" id="co-country"><option>United States</option><option>United Kingdom</option><option>Canada</option><option>Australia</option><option>Bangladesh</option><option>India</option></select>
+            </div>
+          </div>
+          <div class="form-section">
+            <div class="form-section-title">Payment Method</div>
+            <div class="payment-opt selected" id="pay-card" onclick="selectPay('card')"><input type="radio" name="pay" checked/><div class="payment-opt-icon" style="font-size:18px;width:28px;text-align:center">▣</div><div><div class="payment-opt-label">Credit / Debit Card</div><div class="payment-opt-sub">Visa, Mastercard, Amex</div></div></div>
+            <div id="card-fields" style="margin:10px 0;padding:16px;background:var(--cream);border-radius:var(--r);border:1px solid var(--border)">
+              <div class="form-group"><label class="form-label">Card Number</label><input class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" oninput="this.value=this.value.replace(/\D/g,'').replace(/(.{4})/g,'₹1 ').trim()"/></div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Expiry</label><input class="form-control" placeholder="MM/YY" maxlength="5"/></div>
+                <div class="form-group"><label class="form-label">CVV</label><input class="form-control" placeholder="123" maxlength="4"/></div>
+              </div>
+            </div>
+            <div class="payment-opt" id="pay-paypal" onclick="selectPay('paypal')"><input type="radio" name="pay"/><div style="font-size:18px;width:28px;text-align:center">◈</div><div><div class="payment-opt-label">PayPal</div><div class="payment-opt-sub">Fast & secure</div></div></div>
+            <div class="payment-opt" id="pay-cod" onclick="selectPay('cod')"><input type="radio" name="pay"/><div style="font-size:18px;width:28px;text-align:center">◉</div><div><div class="payment-opt-label">Cash on Delivery</div><div class="payment-opt-sub">Pay when delivered</div></div></div>
+          </div>
+        </div>
+        <div class="order-summary">
+          <div style="font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:18px">Your Order</div>
+          <div id="co-items" style="margin-bottom:14px"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="co-sub">₹0.00</span></div>
+          <div class="summary-row"><span>Shipping</span><span id="co-ship">₹10.00</span></div>
+          <div class="summary-total" style="margin-top:14px"><span>Total</span><span id="co-total">₹0.00</span></div>
+          <button class="btn btn-dark btn-full" style="margin-top:18px" id="place-btn" onclick="placeOrder()">Place Order</button>
+          <div style="text-align:center;margin-top:12px;font-family:var(--mono);font-size:9px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase">By placing your order you agree to our Terms</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════ ADMIN ══════════ -->
+<div class="page" id="page-admin">
+  <div id="admin-login" class="login-screen">
+    <div class="login-box">
+      <div class="login-logo">LU<em>X</em>E</div>
+      <div class="login-sub">Admin Portal</div>
+      <div class="form-group"><label class="form-label">Username</label><input type="text" class="form-control" id="a-user" value="admin"/></div>
+      <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-control" id="a-pass" value="admin123"/></div>
+      <button class="btn btn-dark btn-full" style="margin-top:8px" onclick="doAdminLogin()">Sign In →</button>
+      <div id="login-err" style="color:var(--rust);font-size:12px;margin-top:10px;text-align:center;display:none;font-family:var(--mono)">Invalid credentials</div>
+      <div style="margin-top:14px;text-align:center;font-family:var(--mono);font-size:10px;color:var(--text-muted);letter-spacing:.5px">admin / admin123</div>
+    </div>
+  </div>
+
+  <div id="admin-panel" style="display:none">
+    <div class="admin-wrap">
+      <div class="admin-sidebar">
+        <div class="admin-sidebar-brand">
+          <div class="admin-sidebar-logo">LUXE</div>
+          <div class="admin-sidebar-sub">Admin Dashboard</div>
+        </div>
+        <div class="admin-nav active" id="anav-dashboard" onclick="showAdminTab('dashboard')"><span class="anav-icon">◈</span> Dashboard</div>
+        <div class="admin-nav" id="anav-orders" onclick="showAdminTab('orders')"><span class="anav-icon">◎</span> Orders <span id="pending-cnt" style="margin-left:auto;background:var(--gold);color:var(--ink);font-size:9px;padding:2px 6px;border-radius:10px;font-family:var(--mono)"></span></div>
+        <div class="admin-nav" id="anav-stock" onclick="showAdminTab('stock')"><span class="anav-icon">▣</span> Stock</div>
+        <div class="admin-nav" id="anav-products" onclick="showAdminTab('products')"><span class="anav-icon">◇</span> Products</div>
+        <div class="admin-nav" id="anav-addproduct" onclick="showAdminTab('addproduct')"><span class="anav-icon">+</span> Add Product</div>
+        <div style="margin-top:auto;padding:20px;border-top:1px solid rgba(255,255,255,.06)">
+          <button onclick="doAdminLogout()" style="width:100%;background:rgba(255,255,255,.04);color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:9px;font-size:11px;font-weight:500;cursor:pointer;font-family:var(--mono);letter-spacing:.5px;margin-bottom:8px">Sign Out</button>
+          <button onclick="resetToDefault()" style="width:100%;background:transparent;color:rgba(255,255,255,.2);border:none;padding:6px;font-size:10px;cursor:pointer;font-family:var(--mono);letter-spacing:.5px">Reset to Default</button>
+        </div>
+      </div>
+
+      <div class="admin-main">
+        <!-- DASHBOARD -->
+        <div id="atab-dashboard">
+          <div class="admin-title">Dashboard</div>
+          <div class="stat-grid" id="a-stats"></div>
+          <div class="panel"><div class="panel-hdr"><span>Recent Orders</span><button class="btn btn-ghost btn-sm" onclick="showAdminTab('orders')">View All</button></div>
+          <table class="dtbl"><thead><tr><th>Order ID</th><th>Customer</th><th>Total</th><th>Status</th><th>Date</th></tr></thead><tbody id="a-recent-orders"></tbody></table></div>
+        </div>
+
+        <!-- ORDERS -->
+        <div id="atab-orders" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px;flex-wrap:wrap;gap:12px">
+            <div class="admin-title" style="margin-bottom:0">Orders</div>
+            <div style="display:flex;gap:10px">
+              <input id="ord-search" type="text" placeholder="Search..." class="form-control" style="width:180px" oninput="renderAdminOrders()"/>
+              <select id="ord-filter" class="form-control" style="width:auto;cursor:pointer" onchange="renderAdminOrders()">
+                <option value="all">All</option><option value="pending">Pending</option><option value="processing">Processing</option><option value="shipped">Shipped</option><option value="delivered">Delivered</option><option value="cancelled">Cancelled</option>
+              </select>
+            </div>
+          </div>
+          <div class="panel"><table class="dtbl"><thead><tr><th>Order ID</th><th>Customer</th><th>Phone</th><th>Product(s)</th><th>Total</th><th>Date</th><th>Status</th></tr></thead>
+          <tbody id="a-orders-tbody"></tbody></table>
+          <div id="no-orders-msg" style="text-align:center;padding:44px;color:var(--text-muted);font-size:13px;display:none">No orders found</div></div>
+        </div>
+
+        <!-- STOCK -->
+        <div id="atab-stock" style="display:none">
+          <div class="admin-title">Stock Management</div>
+          <div class="stat-grid" id="a-stock-stats"></div>
+          <div class="panel"><div class="panel-hdr">Update Stock</div>
+          <table class="dtbl"><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Current Stock</th><th>Status</th><th>Add Qty</th><th>Save</th></tr></thead>
+          <tbody id="a-stock-tbody"></tbody></table></div>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div id="atab-products" style="display:none">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:22px">
+            <div class="admin-title" style="margin-bottom:0">All Products</div>
+            <button class="btn btn-dark btn-sm" onclick="showAdminTab('addproduct')">+ Add Product</button>
+          </div>
+          <div class="panel"><table class="dtbl"><thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Old Price</th><th>Stock</th><th>Rating</th><th>Reviews</th><th>Action</th></tr></thead>
+          <tbody id="a-prod-tbody"></tbody></table></div>
+        </div>
+
+        <!-- ADD PRODUCT -->
+        <div id="atab-addproduct" style="display:none">
+          <div class="admin-title">Add New Product</div>
+          <div style="display:grid;grid-template-columns:1fr 320px;gap:24px;align-items:start">
+            <div class="panel" style="padding:28px">
+              <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:20px;padding-bottom:14px;border-bottom:1px solid var(--border)">Product Information</div>
+              <div class="form-group"><label class="form-label">Product Name *</label><input type="text" class="form-control" id="ap-name" placeholder="e.g. Premium Leather Bag" oninput="updatePreview()"/></div>
+              <div class="form-group">
+                <label class="form-label">Product Image *</label>
+                <div class="img-upload-area" id="img-upload-area" onclick="document.getElementById('ap-image-input').click()">
+                  <input type="file" id="ap-image-input" accept="image/*" style="display:none" onchange="handleImageUpload(this)"/>
+                  <div id="img-placeholder">
+                    <div class="img-upload-icon">↑</div>
+                    <div class="img-upload-title">Click to upload image</div>
+                    <div class="img-upload-sub">PNG, JPG, WEBP — Max 5MB</div>
+                  </div>
+                  <div id="img-preview-wrap" style="display:none">
+                    <img id="img-preview-thumb" style="width:100px;height:120px;object-fit:contain;border-radius:var(--r);background:var(--parchment)"/>
+                    <div style="margin-top:10px;font-family:var(--mono);font-size:11px;color:var(--sage);font-weight:500">Image uploaded</div>
+                    <div id="img-filename" style="font-size:11px;color:var(--text-muted);margin-top:3px"></div>
+                  </div>
+                </div>
+                <button type="button" id="img-remove-btn" onclick="removeImage()" style="display:none;margin-top:8px;background:none;border:none;color:var(--rust);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--mono)">✕ Remove</button>
+              </div>
+              <div class="form-group"><label class="form-label">Category *</label>
+                <select class="form-control" id="ap-category" onchange="updatePreview()"><option value="">-- Select --</option><option>Footwear</option><option>Mobile</option><option>Clothing</option><option>Electronics</option><option>Eyewear</option><option>Other</option></select>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Price (₹) *</label><input type="number" class="form-control" id="ap-price" placeholder="120" min="0" step="0.01" oninput="updatePreview()"/></div>
+                <div class="form-group"><label class="form-label">Old Price (₹)</label><input type="number" class="form-control" id="ap-oldprice" placeholder="150" min="0" step="0.01" oninput="updatePreview()"/></div>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label class="form-label">Stock *</label><input type="number" class="form-control" id="ap-stock" placeholder="25" min="0" oninput="updatePreview()"/></div>
+                <div class="form-group"><label class="form-label">Badge</label>
+                  <select class="form-control" id="ap-badge" onchange="updatePreview()"><option value="">None</option><option>Best Seller</option><option>Hot</option><option>Sale</option><option>New</option><option>Top Rated</option><option>Luxury</option></select>
+                </div>
+              </div>
+              <div class="form-group"><label class="form-label">Sizes (comma separated)</label><input type="text" class="form-control" id="ap-sizes" placeholder="S, M, L, XL or 7, 8, 9, 10"/></div>
+              <div class="form-group"><label class="form-label">Description</label><textarea class="form-control" id="ap-desc" rows="3" placeholder="Product description..."></textarea></div>
+              <div style="display:flex;gap:12px;margin-top:8px">
+                <button class="btn btn-dark" style="flex:1" onclick="submitAddProduct()">Add Product</button>
+                <button class="btn btn-ghost" style="flex:1" onclick="resetAddProduct()">Reset</button>
+              </div>
+            </div>
+            <div>
+              <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Live Preview</div>
+              <div class="preview-card">
+                <div class="preview-img" id="ap-prev-img-wrap">
+                  <img id="ap-prev-img-tag" style="display:none"/>
+                  <div id="ap-prev-img-placeholder" style="color:var(--border);font-size:48px;font-family:var(--serif)">◈</div>
+                  <div id="ap-prev-badge" style="position:absolute;top:10px;left:10px;display:none"><span class="tag tag-dark" id="ap-prev-badge-text"></span></div>
+                  <div id="ap-prev-disc" style="position:absolute;top:10px;right:10px;display:none"><span class="tag tag-rust" id="ap-prev-disc-text"></span></div>
+                </div>
+                <div style="padding:14px">
+                  <div style="font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px" id="ap-prev-cat">Category</div>
+                  <div style="font-size:14px;font-weight:500;color:var(--ink);line-height:1.3" id="ap-prev-name">Product Name</div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+                    <div>
+                      <span style="font-family:var(--mono);font-size:15px;font-weight:500" id="ap-prev-price">₹0.00</span>
+                      <span style="font-family:var(--mono);font-size:11px;color:var(--text-muted);text-decoration:line-through;margin-left:4px" id="ap-prev-oldprice"></span>
+                    </div>
+                    <div style="width:30px;height:30px;background:var(--ink);border-radius:var(--r);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:16px">+</div>
+                  </div>
+                </div>
+              </div>
+              <div style="margin-top:12px;background:var(--white);border-radius:var(--r2);padding:14px;border:1px solid var(--border)">
+                <div style="font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Summary</div>
+                <div style="font-size:12px;display:flex;flex-direction:column;gap:7px">
+                  <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Stock</span><span id="ap-prev-stock-lbl" style="font-weight:500;font-family:var(--mono)">—</span></div>
+                  <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Sizes</span><span id="ap-prev-sizes" style="font-weight:500;text-align:right;max-width:160px;font-family:var(--mono);font-size:11px">—</span></div>
+                  <div style="display:flex;justify-content:space-between"><span style="color:var(--text-muted)">Discount</span><span id="ap-prev-disc-pct" style="font-weight:500;color:var(--sage);font-family:var(--mono)">—</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:28px">
+            <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px">Recently Added</div>
+            <div id="ap-recently-added" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
+              <div style="text-align:center;padding:28px;color:var(--text-muted);grid-column:1/-1;background:var(--white);border-radius:var(--r2);border:1px solid var(--border);font-size:13px">No products added yet in this session</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT PRODUCT MODAL -->
+<div class="modal-overlay" id="edit-product-modal">
+  <div class="modal" style="max-width:580px">
+    <div class="modal-hdr">
+      <div class="modal-title">Edit Product</div>
+      <button class="modal-close-btn" onclick="closeEditModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ep-id"/>
+      <div class="form-group">
+        <label class="form-label">Product Name *</label>
+        <input type="text" class="form-control" id="ep-name" placeholder="Product name"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Category *</label>
+        <select class="form-control" id="ep-category">
+          <option>Footwear</option><option>Mobile</option><option>Clothing</option>
+          <option>Electronics</option><option>Eyewear</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Price (₹) *</label>
+          <input type="number" class="form-control" id="ep-price" min="0" step="0.01"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Old Price (₹)</label>
+          <input type="number" class="form-control" id="ep-oldprice" min="0" step="0.01"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Stock *</label>
+          <input type="number" class="form-control" id="ep-stock" min="0"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Badge</label>
+          <select class="form-control" id="ep-badge">
+            <option value="">No Badge</option>
+            <option>Best Seller</option><option>Hot</option><option>Sale</option>
+            <option>New</option><option>Top Rated</option><option>Luxury</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Sizes (comma separated)</label>
+        <input type="text" class="form-control" id="ep-sizes" placeholder="S, M, L, XL or 7, 8, 9, 10"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Description</label>
+        <textarea class="form-control" id="ep-desc" rows="4" placeholder="Product description..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Change Image <span style="font-weight:400;text-transform:none;font-size:11px">(optional — leave blank to keep current)</span></label>
+        <div id="ep-img-upload-area" onclick="document.getElementById('ep-image-input').click()"
+          style="border:1.5px dashed var(--border);border-radius:var(--r2);padding:20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--cream)">
+          <input type="file" id="ep-image-input" accept="image/*" style="display:none" onchange="handleEditImageUpload(this)"/>
+          <div id="ep-img-placeholder">
+            <div style="font-size:24px;opacity:.4;margin-bottom:6px">↑</div>
+            <div style="font-size:13px;font-weight:500;color:var(--ink)">Click to upload new image</div>
+            <div style="font-size:11px;color:var(--text-muted);font-family:var(--mono);margin-top:3px">PNG, JPG, WEBP — Max 5MB</div>
+          </div>
+          <div id="ep-img-preview-wrap" style="display:none">
+            <img id="ep-img-preview-thumb" style="width:80px;height:100px;object-fit:contain;border-radius:var(--r);background:var(--parchment)"/>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--sage);margin-top:6px">New image selected</div>
+          </div>
+        </div>
+        <button type="button" id="ep-img-remove-btn" onclick="removeEditImage()" style="display:none;margin-top:6px;background:none;border:none;color:var(--rust);font-size:12px;cursor:pointer;font-family:var(--mono)">✕ Remove new image</button>
+      </div>
+      <!-- Current image preview -->
+      <div id="ep-current-img-wrap" style="display:none;margin-bottom:16px">
+        <label class="form-label">Current Image</label>
+        <img id="ep-current-img" style="width:80px;height:100px;object-fit:cover;border-radius:var(--r);border:1px solid var(--border)"/>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:8px">
+        <button class="btn btn-dark" style="flex:1" onclick="saveEditProduct()">Save Changes</button>
+        <button class="btn btn-ghost" style="flex:1" onclick="closeEditModal()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal" style="max-width:440px;text-align:center">
+    <div style="padding:48px 32px">
+      <div style="font-family:var(--serif);font-size:56px;color:var(--gold);margin-bottom:16px;line-height:1">✓</div>
+      <h2 style="font-family:var(--serif);font-size:28px;font-weight:600;margin-bottom:8px">Order Confirmed</h2>
+      <p style="color:var(--text-muted);margin-bottom:12px;font-size:14px">Thank you for your purchase.</p>
+      <div id="order-id-show" style="background:var(--cream);border-radius:var(--r);padding:10px 16px;margin:16px 0;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--gold-dim);border:1px solid var(--border)"></div>
+      <div style="display:flex;gap:10px;justify-content:center">
+        <button class="btn btn-dark" onclick="closeSuccessModal()">Continue Shopping</button>
+        <button class="btn btn-ghost btn-sm" onclick="closeSuccessModal();showPage('admin')">View in Admin</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUPPORT MODAL -->
+<div class="modal-overlay" id="support-modal">
+  <div class="modal" style="max-width:560px">
+    <div class="modal-hdr">
+      <div class="modal-title" id="support-modal-title">Support</div>
+      <button class="modal-close-btn" onclick="closeSupportModal()">✕</button>
+    </div>
+    <div class="modal-body" id="support-modal-body"></div>
+  </div>
+</div>
+
+<!-- ORDER DETAIL MODAL -->
+<div class="modal-overlay" id="order-detail-modal">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-hdr"><div class="modal-title">Order Details</div><button class="modal-close-btn" onclick="closeOrderDetailModal()">✕</button></div>
+    <div class="modal-body" id="order-detail-body"></div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+<!-- SUPPORT MODAL -->
+<div class="modal-overlay" id="support-modal">
+  <div class="modal" style="max-width:540px">
+    <div class="modal-hdr">
+      <div class="modal-title" id="support-modal-title">Support</div>
+      <button class="modal-close-btn" onclick="closeSupportModal()">✕</button>
+    </div>
+    <div class="modal-body" id="support-modal-body"></div>
+  </div>
+</div>
+
+</body>
+</html>
